@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile - StudyShare</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <style>
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        @media (min-width: 900px) {
+            .profile-grid {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        .list-group {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .list-group-item {
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .list-group-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand">StudyShare</a>
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <li><a href="upload.html" class="btn btn-secondary">Upload Note</a></li>
+                <li><a href="#" id="nav-logout" class="nav-link">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="dashboard-header mb-xl">
+            <h2>Welcome, <span id="userNameDisplay" class="text-primary">User</span></h2>
+        </div>
+
+        <div class="profile-grid">
+            <!-- Main Content Area -->
+            <div class="flex-col gap-xl">
+
+                <!-- Uploaded Notes (Singly Linked List) -->
+                <section class="glass-panel">
+                    <div class="flex justify-between items-center mb-md">
+                        <h3>My Uploaded Notes</h3>
+                        <span class="text-muted" style="font-size: 0.85rem;">[Data Structure: Singly Linked List]</span>
+                    </div>
+                    <div id="myNotesGallery" class="grid-layout">
+                        <p class="text-muted">Loading your notes...</p>
+                    </div>
+                </section>
+
+                <!-- Download Queue (Circular Queue) -->
+                <section class="glass-panel">
+                    <div class="flex justify-between items-center mb-md">
+                        <h3>Download Queue</h3>
+                        <span class="text-muted" style="font-size: 0.85rem;">[Data Structure: Circular Queue]</span>
+                    </div>
+                    <p class="text-muted mb-sm">Items pending processing limit (mock simulation):</p>
+                    <ul id="downloadQueueList" class="list-group mb-md">
+                        <li class="list-group-item">
+                            <p class="text-muted">Queue is empty</p>
+                        </li>
+                    </ul>
+                    <button id="processQueueBtn" class="btn btn-primary btn-sm">Process Next</button>
+                </section>
+
+            </div>
+
+            <!-- Sidebar Area -->
+            <div class="flex-col gap-xl">
+
+                <!-- Search History (Stack) -->
+                <section class="glass-panel">
+                    <div class="flex justify-between items-center mb-md">
+                        <h3>Search History</h3>
+                        <span class="text-muted" style="font-size: 0.85rem;">[ADT: Stack]</span>
+                    </div>
+                    <ul id="searchHistoryList" class="list-group mb-sm">
+                        <li class="list-group-item">
+                            <p class="text-muted">No recent searches</p>
+                        </li>
+                    </ul>
+                    <button id="undoSearchBtn" class="btn btn-secondary btn-sm btn-block mt-sm">Undo Last
+                        Search</button>
+                </section>
+
+                <!-- Trending Notes (Max Heap) -->
+                <section class="glass-panel">
+                    <div class="flex justify-between items-center mb-md">
+                        <h3>Global Trending</h3>
+                        <span class="text-muted" style="font-size: 0.85rem;">[ADT: Max Heap]</span>
+                    </div>
+                    <ul id="trendingList" class="list-group">
+                        <li class="list-group-item text-muted">Loading trending...</li>
+                    </ul>
+                </section>
+
+                <!-- Recent Global (Doubly Linked List) -->
+                <section class="glass-panel">
+                    <div class="flex justify-between items-center mb-md">
+                        <h3>Recently Added</h3>
+                        <span class="text-muted" style="font-size: 0.85rem;">[DS: Doubly Linked List]</span>
+                    </div>
+                    <ul id="recentList" class="list-group">
+                        <li class="list-group-item text-muted">Loading recent...</li>
+                    </ul>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="js/app.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/profile.js"></script>
+</body>
+
+</html>

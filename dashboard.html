@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - StudyShare</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
+    <style>
+        /* Dashboard specific */
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-xl);
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+
+        .search-bar {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .filters {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="brand">StudyShare</a>
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="dashboard.html" class="nav-link"
+                        style="color: var(--color-primary); font-weight: 600;">Dashboard</a></li>
+                <li><a href="upload.html" id="nav-upload" class="btn btn-secondary">Upload Note</a></li>
+                <li><a href="profile.html" id="nav-profile" class="nav-link">Profile</a></li>
+                <li><a href="#" id="nav-logout" class="nav-link">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="dashboardSection">
+            <div class="dashboard-header">
+                <h2>Note Repository</h2>
+
+                <div class="search-bar">
+                    <input type="text" id="searchInput" class="form-control"
+                        placeholder="Search by title or description...">
+                    <button id="searchBtn" class="btn btn-primary">Search</button>
+                </div>
+
+                <div class="filters">
+                    <select id="subjectFilter" class="form-control" style="width: auto;">
+                        <option value="">All Subjects</option>
+                        <option value="DSA">DSA</option>
+                        <option value="Web Dev">Web Dev</option>
+                        <option value="DBMS">DBMS</option>
+                        <option value="OS">OS</option>
+                        <option value="Math">Math</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                    <select id="sortFilter" class="form-control" style="width: auto;">
+                        <option value="newest">Newest First</option>
+                        <option value="downloads">Most Downloaded</option>
+                        <option value="alpha">A-Z</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="notesGallery" class="grid-layout">
+                <!-- Notes Cards will be injected here via dashboard.js -->
+                <p class="text-muted text-center" style="grid-column: 1/-1;">Loading notes...</p>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="js/app.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/dashboard.js"></script>
+</body>
+
+</html>
